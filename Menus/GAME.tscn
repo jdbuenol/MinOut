@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Menus/Table.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menus/GAME.gd" type="Script" id=3]
+[ext_resource path="res://Menus/borders.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/game.wav" type="AudioStream" id=5]
+
+[node name="GAME" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_right = 116.0
+margin_bottom = 96.0
+color = Color( 0.117647, 0.109804, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Table" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64.7641, 87.1907 )
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 65.1386, 89.2509 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 25, 3 )
+
+[node name="BLOCKS" type="Node" parent="."]
+
+[node name="CanvasLayer" parent="BLOCKS" instance=ExtResource( 4 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

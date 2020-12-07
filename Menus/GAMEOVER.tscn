@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/PressStart2P-vaV7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menus/GAMEOVER.gd" type="Script" id=2]
+[ext_resource path="res://Menus/borders.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="Gameover" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_right = 116.0
+margin_bottom = 96.0
+color = Color( 0.117647, 0.109804, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 36.875
+margin_top = 24.3608
+margin_right = 100.875
+margin_bottom = 59.3608
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "GAME
+OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" parent="Label" instance=ExtResource( 3 )]

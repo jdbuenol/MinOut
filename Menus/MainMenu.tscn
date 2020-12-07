@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/PressStart2P-vaV7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=2]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Menus/borders.tscn" type="PackedScene" id=4]
+[ext_resource path="res://music/MinOut.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer2/ColorRect2:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 96 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.131966
+margin_bottom = -0.131966
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_right = -20.0
+margin_bottom = 7.62939e-06
+color = Color( 0.117647, 0.109804, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_left = 24.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 104.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "MinOut"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ColorRect"]
+margin_left = 13.7575
+margin_top = 15.5791
+margin_right = 349.758
+margin_bottom = 31.5791
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "Minimalistic Breakout"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="ColorRect"]
+margin_left = 28.0
+margin_top = 32.2806
+margin_right = 108.0
+margin_bottom = 48.2806
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="ColorRect"]
+margin_left = 20.0
+margin_top = 48.2806
+margin_right = 132.0
+margin_bottom = 64.2806
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="ColorRect"]
+margin_left = 31.0
+margin_top = 64.2806
+margin_right = 95.0
+margin_bottom = 80.2806
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.776471, 0.729412, 0.67451, 1 )
+text = "EXIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="Sprite" parent="."]
+position = Vector2( 37.0912, 35.1268 )
+texture = ExtResource( 2 )
+
+[node name="arrow2" type="Sprite" parent="."]
+position = Vector2( 29.3614, 51.6271 )
+texture = ExtResource( 2 )
+
+[node name="arrow3" type="Sprite" parent="."]
+position = Vector2( 40.3615, 67.5327 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enter = SubResource( 2 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+margin_top = 96.0
+margin_right = 136.0
+margin_bottom = 192.0
+color = Color( 0.117647, 0.109804, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
